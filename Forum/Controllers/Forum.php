@@ -56,6 +56,11 @@ use Core\Controller,
         Router::any('Topic/(:num)', 'App\Modules\Forum\Controllers\Forum@topic');
     		Router::any('Topic/(:num)/(:num)', 'App\Modules\Forum\Controllers\Forum@topic');
         Router::any('NewTopic/(:num)', 'App\Modules\Forum\Controllers\Forum@newtopic');
+        Router::any('AdminPanel-Forum-Settings', 'App\Modules\Forum\Controllers\ForumAdmin@forum_settings');
+        Router::any('AdminPanel-Forum-Categories', 'App\Modules\Forum\Controllers\ForumAdmin@forum_categories');
+        Router::any('AdminPanel-Forum-Categories/(:any)/(:any)', 'App\Modules\Forum\Controllers\ForumAdmin@forum_categories');
+        Router::any('AdminPanel-Forum-Categories/(:any)/(:any)/(:any)', 'App\Modules\Forum\Controllers\ForumAdmin@forum_categories');
+        Router::any('AdminPanel-Forum-Blocked-Content', 'App\Modules\Forum\Controllers\ForumAdmin@forum_blocked');
       }
   	}
 
