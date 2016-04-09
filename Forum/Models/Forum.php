@@ -980,4 +980,62 @@ class Forum extends Model {
     }
 
 
+    /**
+     * forum_search
+     *
+     * get list of topics for given category
+     *
+     * @param int $search = Search String
+     * @param string $limit data from Paginator class
+     *
+     * @return array returns forum topics list data
+     */
+    public function forum_search($search, $limit = null){
+      $data = $this->db->select("
+      (SELECT
+          forum_id,
+          forum_post_id,
+          forum_timestamp as tstamp,
+          forum_content as content,
+          forum_title as title,
+          forum_user_id,
+          forum_status,
+          allow,
+          'main_post' AS post_type
+        FROM
+          `".PREFIX."forum_posts`
+        WHERE
+          (forum_content LIKE :search
+        OR
+          forum_title LIKE :search)
+        AND
+          allow = 'TRUE')
+      UNION ALL
+      (SELECT
+          fpr.fpr_id,
+          fpr.fpr_post_id,
+          fpr.fpr_timestamp as tstamp,
+          fpr.fpr_content as content,
+          fp.forum_title as title,
+          fpr.fpr_user_id as forum_user_id,
+          fp.forum_status as forum_status,
+          fpr.allow,
+          'reply_post' AS post_type
+        FROM
+          `".PREFIX."forum_posts_replys` fpr
+        LEFT JOIN
+          `".PREFIX."forum_posts` fp
+        ON
+          fp.forum_post_id = fpr.fpr_post_id
+        WHERE
+          fpr_content LIKE :search
+        AND
+          fpr.allow = 'TRUE')
+      ORDER BY tstamp DESC
+      $limit
+      ",
+      array(':search' => '%'.$search.'%'));
+      return $data;
+    }
+
 }

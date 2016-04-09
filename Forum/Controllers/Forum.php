@@ -61,11 +61,14 @@ use Core\Controller,
         Router::any('AdminPanel-Forum-Categories/(:any)/(:any)', 'App\Modules\Forum\Controllers\ForumAdmin@forum_categories');
         Router::any('AdminPanel-Forum-Categories/(:any)/(:any)/(:any)', 'App\Modules\Forum\Controllers\ForumAdmin@forum_categories');
         Router::any('AdminPanel-Forum-Blocked-Content', 'App\Modules\Forum\Controllers\ForumAdmin@forum_blocked');
+        Router::any('SearchForum', 'App\Modules\Forum\Controllers\Forum@forumSearch');
+        Router::any('SearchForum/(:any)', 'App\Modules\Forum\Controllers\Forum@forumSearch');
+        Router::any('SearchForum/(:any)/(:num)', 'App\Modules\Forum\Controllers\Forum@forumSearch');
       }
   	}
 
 
-    // Forume Home Page Display
+    // Forum Home Page Display
     public function forum(){
 
       /** Check to see if user is logged in **/
@@ -98,7 +101,7 @@ use Core\Controller,
 
       // Send data to view
   		View::renderTemplate('header', $data);
-  		View::renderModule('Forum/views/forum_home', $data,$error,$success);
+  		View::renderModule('Forum/views/forum_home', $data);
       View::renderModule('Forum/views/forum_sidebar', $data);
   		View::renderTemplate('footer', $data);
     }
@@ -153,7 +156,7 @@ use Core\Controller,
 
       // Send data to view
       View::renderTemplate('header', $data);
-      View::renderModule('Forum/views/topics', $data,$error,$success);
+      View::renderModule('Forum/views/topics', $data);
       View::renderModule('Forum/views/forum_sidebar', $data);
       View::renderTemplate('footer', $data);
     }
@@ -296,7 +299,7 @@ use Core\Controller,
                   // No Errors, lets submit the new topic to db
           				if($this->model->updateTopicReply($data['edit_reply_id'], $data['fpr_content'])){
           					// Success
-                    SuccessHelper::push('You Have Successfully Updated a Topic Reply', 'Topic/'.$id.'/'.$redirect_page_num.'/#topicreply'.$data['edit_reply_id']);
+                    SuccessHelper::push('You Have Successfully Updated a Topic Reply', 'Topic/'.$id.'/'.$redirect_page_num.'#topicreply'.$data['edit_reply_id']);
           				}else{
           					// Fail
                     $error[] = 'Edit Topic Reply Failed';
@@ -434,7 +437,7 @@ use Core\Controller,
 
       // Send data to view
       View::renderTemplate('header', $data);
-      View::renderModule('Forum/views/topic', $data,$error,$success);
+      View::renderModule('Forum/views/topic', $data);
       View::renderModule('Forum/views/forum_sidebar', $data);
       View::renderTemplate('footer', $data);
     }
@@ -553,9 +556,64 @@ use Core\Controller,
 
       // Send data to view
       View::renderTemplate('header', $data);
-      View::renderModule('Forum/views/newtopic', $data,$error,$success);
+      View::renderModule('Forum/views/newtopic', $data);
       View::renderModule('Forum/views/forum_sidebar', $data);
       View::renderTemplate('footer', $data);
+    }
+
+    /* Forum Search Function */
+    public function forumSearch($search = null, $current_page = null){
+
+      /** Check to see if user is logged in **/
+      if($data['isLoggedIn'] = $this->auth->isLogged()){
+        /** User is logged in - Get their data **/
+        $u_id = $this->auth->user_info();
+        $data['currentUserData'] = $this->user->getCurrentUserData($u_id);
+        $data['isAdmin'] = $this->user->checkIsAdmin($u_id);
+      }
+
+  		// Collect Data for view
+  		$data['title'] = "Search ".$this->forum_title;
+  		$data['welcome_message'] = $this->forum_description;
+
+      // Make sure search entry is not too short
+      if(strlen($search) > 2){
+        // Get data related to search
+        $data['forum_topics'] = $this->model->forum_search($search, $this->pagesTopic->getLimit($current_page, $this->forum_topic_limit));
+
+        // Set total number of messages for paginator
+        $total_num_topics = count($this->model->forum_search($search));
+        $this->pagesTopic->setTotal($total_num_topics);
+
+        // Send page links to view
+        $pageFormat = DIR."SearchForum/$search/$id/"; // URL page where pages are
+        $data['pageLinks'] = $this->pagesTopic->pageLinks($pageFormat, null, $current_page);
+
+        // Display How Many Results
+        $data['results_count'] = $total_num_topics;
+      }else{
+        $data['error'] = "Search context is too small.  Please try again!";
+        $data['results_count'] = 0;
+      }
+
+      // Display What user is searching for
+      $data['search_text'] = urldecode($search);
+
+      // Get Recent Posts List for Sidebar
+      $data['forum_recent_posts'] = $this->model->forum_recent_posts();
+
+      // Setup Breadcrumbs
+  		$data['breadcrumbs'] = "
+  			<li><a href='".DIR."'>Home</a></li>
+  			<li class='active'>".$this->forum_title."</li>
+  		";
+      $data['csrf_token'] = Csrf::makeToken('forum');
+
+      // Send data to view
+  		View::renderTemplate('header', $data);
+  		View::renderModule('Forum/views/searchForum', $data);
+      View::renderModule('Forum/views/forum_sidebar', $data);
+  		View::renderTemplate('footer', $data);
     }
 
   }

@@ -63,7 +63,9 @@ use Core\Language,
     						// Show user main pic
                 // Get user name from userID
                 $f_p_user_name = CurrentUserData::getUserName($data['topic_creator']);
-    						echo " <a href='".DIR."Profile/$f_p_user_name'>$f_p_user_name</a> ";
+                echo "<meta name='author' content='$f_p_user_name'>";
+                echo "<meta name='date' content='".date("Y-m-d", strtotime($data['topic_date']))."' scheme='YYYY-MM-DD'>";
+    						echo " <a href='".DIR."Profile/$f_p_user_name' rel='author'>$f_p_user_name</a> ";
     					echo "</div>";
     					echo "<div class='col-lg-6 col-md-6 col-sm-6' style='text-align:right'>";
     						// Display how long ago this was posted

@@ -13,8 +13,30 @@
   use Helpers\CurrentUserData;
 
 ?>
+<script>
+function process()
+  {
+  var url="<?php echo SITEURL; ?>SearchForum/" + document.getElementById("forumSearch").value;
+  location.href=url;
+  return false;
+  }
+</script>
 
 <div class='col-lg-4 col-md-4'>
+  <div class='panel panel-default'>
+    <form onSubmit="return process();" class="form" method="post">
+    <div class='panel-heading' style='font-weight: bold'>
+      Search Forums
+    </div>
+    <div class='panel-body'>
+      <div class="form-group">
+        <input type="forumSearch" class="form-control" id="forumSearch" placeholder="Search Forums" value="<?php echo $data['search_text']; ?>">
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
+    </div>
+    </form>
+  </div>
+
   <div class='panel panel-default'>
     <div class='panel-heading' style='font-weight: bold'>
       Forum Recent Posts
