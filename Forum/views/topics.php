@@ -72,7 +72,7 @@ use Core\Language,
                       echo "<a href='".DIR."Topic/$f_p_id/' title='$f_p_title' ALT='$f_p_title'>$f_p_title</a>";
                       echo "</h4>";
                       echo "<div class='text small'>";
-                        echo " Created by <a href='".DIR."Profile/$f_p_user_id/' style='font-weight: bold'>$f_p_user_name</a> - ";
+                        echo " Created by <a href='".DIR."Profile/$f_p_user_id' style='font-weight: bold'>$f_p_user_name</a> - ";
                         //Display how long ago this was posted
                         $timestart = "$f_p_timestamp";  //Time of post
                         echo " " . TimeDiff::dateDiff("now", "$timestart", 1) . " ago ";
@@ -114,7 +114,7 @@ use Core\Language,
                         // Display Last Reply User Name
                         $rp_user_name2 = CurrentUserData::getUserName($row2->LR_UserID);
                         //Display how long ago this was posted
-                        echo " Last Reply by <br> <a href='".DIR."Profile/$row2->LR_UserID/' style='font-weight: bold'>$rp_user_name2</a><br> " . TimeDiff::dateDiff("now", "$row2->LR_TimeStamp", 1) . " ago ";
+                        echo " Last Reply by <br> <a href='".DIR."Profile/$row2->LR_UserID' style='font-weight: bold'>$rp_user_name2</a><br> " . TimeDiff::dateDiff("now", "$row2->LR_TimeStamp", 1) . " ago ";
                       }
                     echo "</div>";
                   echo "</div>";

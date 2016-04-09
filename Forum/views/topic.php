@@ -63,7 +63,7 @@ use Core\Language,
     						// Show user main pic
                 // Get user name from userID
                 $f_p_user_name = CurrentUserData::getUserName($data['topic_creator']);
-    						echo " <a href='".DIR."Profile/$f_p_user_name/'>$f_p_user_name</a> ";
+    						echo " <a href='".DIR."Profile/$f_p_user_name'>$f_p_user_name</a> ";
     					echo "</div>";
     					echo "<div class='col-lg-6 col-md-6 col-sm-6' style='text-align:right'>";
     						// Display how long ago this was posted
@@ -86,7 +86,7 @@ use Core\Language,
             }else{
               echo "<span class='glyphicon glyphicon-user icon-size' style='margin-bottom: 2px'></span>";
             }
-            echo " <strong><a href='".DIR."Profile/$f_p_user_name/' class='btn btn-xs btn-default'>$f_p_user_name</a></strong> <Br>";
+            echo " <strong><a href='".DIR."Profile/$f_p_user_name' class='btn btn-xs btn-default'>$f_p_user_name</a></strong> <Br>";
             // Show user's membership status
             foreach(CurrentUserData::getUserGroups($data['topic_creator']) as $row){ echo "<font size='2'>".$row."</font><br>"; };
             echo "<font size='1'>";
@@ -199,7 +199,7 @@ use Core\Language,
 								echo "<div class='col-lg-6 col-md-6 col-sm-6'>";
 									echo " Reply By: ";
 									// Show user main pic
-									echo " <a href='".DIR."Profile/$rf_p_user_id/'>$rf_p_user_name</a> ";
+									echo " <a href='".DIR."Profile/$rf_p_user_id'>$rf_p_user_name</a> ";
 								echo "</div>";
 								echo "<div class='col-lg-6 col-md-6 col-sm-6' style='text-align:right'>";
 									// Display how long ago this was posted
