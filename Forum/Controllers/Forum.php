@@ -576,13 +576,19 @@ use Core\Controller,
   		$data['title'] = "Search ".$this->forum_title;
   		$data['welcome_message'] = $this->forum_description;
 
+      // Display What user is searching for
+      $data['search_text'] = urldecode($search);
+
       // Make sure search entry is not too short
-      if(strlen($search) > 2){
+      if(strlen($data['search_text']) > 2){
+        // Ready the search words for database
+        $search_db = str_replace(' ', '%', $data['search_text']);
+
         // Get data related to search
-        $data['forum_topics'] = $this->model->forum_search($search, $this->pagesTopic->getLimit($current_page, $this->forum_topic_limit));
+        $data['forum_topics'] = $this->model->forum_search($search_db, $this->pagesTopic->getLimit($current_page, $this->forum_topic_limit));
 
         // Set total number of messages for paginator
-        $total_num_topics = count($this->model->forum_search($search));
+        $total_num_topics = count($this->model->forum_search($search_db));
         $this->pagesTopic->setTotal($total_num_topics);
 
         // Send page links to view
@@ -595,9 +601,6 @@ use Core\Controller,
         $data['error'] = "Search context is too small.  Please try again!";
         $data['results_count'] = 0;
       }
-
-      // Display What user is searching for
-      $data['search_text'] = urldecode($search);
 
       // Get Recent Posts List for Sidebar
       $data['forum_recent_posts'] = $this->model->forum_recent_posts();

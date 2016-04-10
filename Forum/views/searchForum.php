@@ -27,11 +27,10 @@ use Core\Language,
    * @return  string  highlighted text
    */
   function highlight_search_text($text, $words) {
-      $highlighted = preg_filter('/' . preg_quote($words) . '/i', '<b><mark>$0</mark></b>', $text);
-      if (!empty($highlighted)) {
-          $text = $highlighted;
-      }
-      return $text;
+    $keywords = implode('|',explode(' ',preg_quote($words)));
+    //var_dump($keyword);
+    $highlighted = preg_replace("/($keywords)/i","<mark>$0</mark>",$text);
+    return $highlighted;
   }
 
 ?>
