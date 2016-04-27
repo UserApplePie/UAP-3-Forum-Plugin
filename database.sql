@@ -1,3 +1,12 @@
+--  
+-- UserApplePie v3 Forum Plugin
+-- @author David (DaVaR) Sargent
+-- @email davar@thedavar.net
+-- @website http://www.userapplepie.com
+-- @version 1.0.0
+-- @release_date 04/27/2016
+--
+
 -- phpMyAdmin SQL Dump
 -- version 4.0.10deb1
 -- http://www.phpmyadmin.net

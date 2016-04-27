@@ -1,12 +1,14 @@
 <?php
-/**
- * Forum Categories Admin Panel View
- *
- * @author DaVaR - davar@userapplepie.com
- * @version 1.0
- * @date Mar 13 2016
- * @updated Mar 13 2016
- */
+/**  
+* UserApplePie v3 Forum Plugin
+* @author David (DaVaR) Sargent
+* @email davar@thedavar.net
+* @website http://www.userapplepie.com
+* @version 1.0.0
+* @release_date 04/27/2016
+**/
+
+/** Forum Categories Admin Panel View **/
 
 use Helpers\Form,
   Core\Success,

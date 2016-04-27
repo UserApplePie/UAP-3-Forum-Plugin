@@ -1,12 +1,14 @@
 <?php
-/**
- * Forum model
- *
- * @author David "DaVaR" Sargent - davar@thedavar.net
- * @version 2.0
- * @date Jan 13, 2016
- * @date updated Feb 21, 2016
- */
+/**  
+* UserApplePie v3 Forum Plugin
+* @author David (DaVaR) Sargent
+* @email davar@thedavar.net
+* @website http://www.userapplepie.com
+* @version 1.0.0
+* @release_date 04/27/2016
+**/
+
+/** Forum model **/
 
 namespace App\Modules\Forum\Models;
 

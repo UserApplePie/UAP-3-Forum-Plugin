@@ -1,12 +1,14 @@
 <?php
-/**
- * Forum Admin Panel Controller
- *
- * @author DaVaR - davar@userapplepie.com
- * @version 1.0
- * @date Jan 17 2016
- * @updated Apr 5 2016
- */
+/**  
+* UserApplePie v3 Forum Plugin
+* @author David (DaVaR) Sargent
+* @email davar@thedavar.net
+* @website http://www.userapplepie.com
+* @version 1.0.0
+* @release_date 04/27/2016
+**/
+
+/** Forum Admin Panel Controller **/
 
 namespace App\Modules\Forum\Controllers;
 
