@@ -535,7 +535,7 @@ class Forum extends Model {
      */
     public function sendTopic($forum_user_id, $forum_id, $forum_title, $forum_content){
       // Format the Content for database
-      $forum_content = nl2br($forum_content);
+      //$forum_content = nl2br($forum_content);
       // Update messages table
       $query = $this->db->insert(PREFIX.'forum_posts', array('forum_id' => $forum_id, 'forum_user_id' => $forum_user_id, 'forum_title' => $forum_title, 'forum_content' => $forum_content));
       $count = count($query);
