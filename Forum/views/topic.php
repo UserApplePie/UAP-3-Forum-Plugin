@@ -86,7 +86,7 @@ use Core\Language,
             $user_signup_display = CurrentUserData::getSignUp($data['topic_creator']);
             $user_total_posts = ForumStats::getTotalPosts($data['topic_creator']);
             if(!empty($user_image_display)){
-              echo "<img src='".DIR.$user_image_display."' class='img-responsive' style='margin-bottom: 2px'>";
+              echo "<img src='".SITEURL.$user_image_display."' class='img-responsive' style='margin-bottom: 2px'>";
             }else{
               echo "<span class='glyphicon glyphicon-user icon-size' style='margin-bottom: 2px'></span>";
             }
@@ -222,7 +222,7 @@ use Core\Language,
                 $user_signup_display = CurrentUserData::getSignUp($rf_p_user_id);
                 $user_total_posts = ForumStats::getTotalPosts($rf_p_user_id);
                 if(!empty($user_image_display)){
-                  echo "<img src='".DIR.$user_image_display."' class='img-responsive' style='margin-bottom: 2px'>";
+                  echo "<img src='".SITEURL.$user_image_display."' class='img-responsive' style='margin-bottom: 2px'>";
                 }else{
                   echo "<span class='glyphicon glyphicon-user icon-size' style='margin-bottom: 2px'></span>";
                 }
