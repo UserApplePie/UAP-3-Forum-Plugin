@@ -1,5 +1,5 @@
 <?php
-/**  
+/**
 * UserApplePie v3 Forum Plugin
 * @author David (DaVaR) Sargent
 * @email davar@thedavar.net
@@ -960,7 +960,7 @@ class Forum extends Model {
         array(':where_id' => $user_id));
         //EMAIL MESSAGE USING PHPMAILER
         $mail = new \Helpers\PhpMailer\Mail();
-        $mail->setFrom(SITEEMAIL);
+        $mail->setFrom(SITEEMAIL, EMAIL_FROM_NAME);
         $mail->addAddress($email_data[0]->email);
         $mail_subject = SITETITLE . " - Forum - ".$email_from_data[0]->username." replied to {$topic_title}";
         $mail->subject($mail_subject);

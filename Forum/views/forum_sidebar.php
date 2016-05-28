@@ -1,18 +1,19 @@
 <?php
-/**  
-* UserApplePie v3 Forum Plugin
-* @author David (DaVaR) Sargent
-* @email davar@thedavar.net
-* @website http://www.userapplepie.com
-* @version 1.0.0
-* @release_date 04/27/2016
-**/
-
-/** Forum Recent Posts Side Bar View **/
+/**
+ * Forum Recent Posts Side Bar View
+ *
+ * @author David "DaVaR" Sargent - davar@thedavar.net
+ * @version 2.0
+ * @date Jan 13, 2016
+ * @date updated Jan 13, 2016
+ */
 
   use Core\Language;
   use Helpers\TimeDiff;
   use Helpers\CurrentUserData;
+  use Helpers\ForumStats;
+
+  if(empty($data['forum_recent_posts'])){ $data['forum_recent_posts'] = ForumStats::forum_recent_posts();}
 
 ?>
 <script>
@@ -24,7 +25,18 @@ function process()
   }
 </script>
 
-<div class='col-lg-4 col-md-4'>
+<div class='col-lg-4 col-md-4 col-sm-4'>
+
+  <div class='panel panel-default'>
+      <div class='panel-heading'>
+          <h3>Users Status</h3>
+      </div>
+      <ul class="list-group">
+          <li class="list-group-item"><a href="<?php echo DIR; ?>Members">Members: <?php echo CurrentUserData::getMembers(); ?></a></li>
+          <li class="list-group-item"><a href="<?php echo DIR; ?>Online-Members">Members Online: <?php echo CurrentUserData::getOnlineMembers(); ?></a></li>
+      </ul>
+  </div>
+
   <div class='panel panel-default'>
     <form onSubmit="return process();" class="form" method="post">
     <div class='panel-heading' style='font-weight: bold'>
