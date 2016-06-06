@@ -17,7 +17,7 @@ use Helpers\Form,
 
 ?>
 
-<div class='col-lg-8 col-md-8 col-sm-8'>
+<div class='col-lg-12 col-md-12 col-sm-12'>
 	<div class='panel panel-default'>
 		<div class='panel-heading'>
 			<h3 class='jumbotron-heading'><?php echo $data['title'];  ?></h3>
@@ -86,14 +86,14 @@ use Helpers\Form,
     </div>
     </div>
 
-
+  <div class='row'>
   <!-- Start of Forum Users groups -->
   <div class='col-lg-4 col-md-4'>
-  	<div class='panel panel-primary'>
+  	<div class='panel panel-default'>
   		<div class='panel-heading'>
   			<h3 class='jumbotron-heading'>Forum User Groups</h3>
   		</div>
-  		<div class='panel-body'>
+
   			<?php
           echo "<table class='table table-hover responsive'>";
             // Displays User's Groups they are a member of
@@ -159,17 +159,17 @@ use Helpers\Form,
   //        echo "<button class='btn btn-xs btn-success' name='submit' type='submit'>Update Permissions</button>";
   //        echo Form::close();
         ?>
-  		</div>
+
   	</div>
   </div>
 
   <!-- Start of Forum Moderator groups -->
   <div class='col-lg-4 col-md-4'>
-  	<div class='panel panel-info'>
+  	<div class='panel panel-default'>
   		<div class='panel-heading'>
   			<h3 class='jumbotron-heading'>Forum Moderator Groups</h3>
   		</div>
-  		<div class='panel-body'>
+
   			<?php
           echo "<table class='table table-hover responsive'>";
             // Displays User's Groups they are a member of
@@ -213,17 +213,17 @@ use Helpers\Form,
             }
           echo "</table>";
         ?>
-  		</div>
+
   	</div>
   </div>
 
   <!-- Start of Forum Admin groups -->
   <div class='col-lg-4 col-md-4'>
-  	<div class='panel panel-warning'>
+  	<div class='panel panel-default'>
   		<div class='panel-heading'>
   			<h3 class='jumbotron-heading'>Forum Administrator Groups</h3>
   		</div>
-  		<div class='panel-body'>
+
   			<?php
           echo "<table class='table table-hover responsive'>";
             // Displays User's Groups they are a member of
@@ -267,9 +267,9 @@ use Helpers\Form,
             }
           echo "</table>";
         ?>
-  		</div>
+
   	</div>
   </div>
-
+  </div>
 
 </div>

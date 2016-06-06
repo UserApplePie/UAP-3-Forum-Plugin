@@ -214,10 +214,10 @@ class ForumAdmin extends Controller{
       <li class='active'><i class='glyphicon glyphicon-cog'></i> ".$data['title']."</li>
     ";
 
-    View::renderTemplate('header', $data);
+    View::renderTemplate('header', $data, 'AdminPanel');
     View::render('AdminPanel/AP-Sidebar', $data);
     View::renderModule('Forum/views/forum_settings', $data);
-    View::renderTemplate('footer', $data);
+    View::renderTemplate('footer', $data, 'AdminPanel');
   }
 
   /**
@@ -609,10 +609,10 @@ class ForumAdmin extends Controller{
     // Setup CSRF token
     $data['csrf_token'] = Csrf::makeToken('ForumAdmin');
 
-    View::renderTemplate('header', $data);
+    View::renderTemplate('header', $data, 'AdminPanel');
     View::render('AdminPanel/AP-Sidebar', $data);
     View::renderModule('Forum/views/forum_categories', $data);
-    View::renderTemplate('footer', $data);
+    View::renderTemplate('footer', $data, 'AdminPanel');
   }
 
   public function forum_blocked(){
@@ -647,10 +647,10 @@ class ForumAdmin extends Controller{
       <li class='active'><i class='glyphicon glyphicon-remove-sign'></i> ".$data['title']."</li>
     ";
 
-    View::renderTemplate('header', $data);
+    View::renderTemplate('header', $data, 'AdminPanel');
     View::render('AdminPanel/AP-Sidebar', $data);
     View::renderModule('Forum/views/forum_blocked', $data);
-    View::renderTemplate('footer', $data);
+    View::renderTemplate('footer', $data, 'AdminPanel');
 
   }
 

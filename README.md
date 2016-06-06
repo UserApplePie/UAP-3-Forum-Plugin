@@ -1,5 +1,5 @@
 # UAP-3-Forum-Plugin
-UserApplePie v3 Forum Plugin v1.0.0
+UserApplePie v3.0.4 Forum Plugin v1.0.1
 
 # Installation
 * Copy Forum folder to app\Modules\ folder
@@ -8,4 +8,4 @@ UserApplePie v3 Forum Plugin v1.0.0
 # Demo
 I currently have the forums running on this website: http://www.thedavar.net/
 
-Release date: 04/27/2016
+v1.0.1 Release date: 06/06/2016

@@ -1,5 +1,5 @@
 <?php
-/**  
+/**
 * UserApplePie v3 Forum Plugin
 * @author David (DaVaR) Sargent
 * @email davar@thedavar.net
@@ -17,14 +17,15 @@ use Helpers\Form,
 
 ?>
 
-<div class='col-lg-8 col-md-8 col-sm-8'>
+<div class='col-lg-12 col-md-12 col-sm-12'>
 	<div class='panel panel-default'>
 		<div class='panel-heading'>
 			<h3 class='jumbotron-heading'><?php echo $data['title'];  ?></h3>
 		</div>
 		<div class='panel-body'>
 			<p><?php echo $data['welcome_message'] ?></p>
-
+    </div>
+	</div>
       <?php
         // Display List of blocked topics
         if(isset($data['blocked_topics'])){
@@ -94,6 +95,5 @@ use Helpers\Form,
           echo "</div>";
         }
        ?>
-		</div>
-	</div>
+
 </div>

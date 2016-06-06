@@ -1,5 +1,5 @@
 <?php
-/**  
+/**
 * UserApplePie v3 Forum Plugin
 * @author David (DaVaR) Sargent
 * @email davar@thedavar.net
@@ -16,13 +16,15 @@ use Helpers\Form,
 
 ?>
 
-<div class='col-lg-8 col-md-8 col-sm-8'>
+<div class='col-lg-12 col-md-12 col-sm-12'>
 	<div class='panel panel-default'>
 		<div class='panel-heading'>
 			<h3 class='jumbotron-heading'><?php echo $data['title'];  ?></h3>
 		</div>
 		<div class='panel-body'>
 			<p><?php echo $data['welcome_message'] ?></p>
+    </div>
+	</div>
 
       <?php
             // Check to see if admin is editing a category
@@ -86,7 +88,7 @@ use Helpers\Form,
                       echo "</div>";
                     echo "</div>";
                   }else{
-                    echo "No Sub categories";
+                    echo "<div class='well'>No Sub categories for ".$data['cat_main_title']."</div>";
                   }
                 }
               }
@@ -232,7 +234,7 @@ use Helpers\Form,
               }// End of isset
               // Display form to create new Main Category
               echo Form::open(array('method' => 'post', 'action' => DIR.'AdminPanel-Forum-Categories/CatMainNew/1'));
-                echo "<div class='panel panel-info'>";
+                echo "<div class='panel panel-default'>";
                   echo "<div class='panel-heading'>";
                     echo "<i class='glyphicon glyphicon-list'></i> New Main Category Title";
                   echo "</div>";
@@ -249,7 +251,4 @@ use Helpers\Form,
             }// End of action check
 
       ?>
-
-		</div>
-	</div>
 </div>
